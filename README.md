@@ -12,7 +12,7 @@ SpiderMonkey in and of itself is unrelated to the Web platform; rather, it is an
 
 The integration of SpiderMonkey into Servo takes places at various levels of granularity, resulting in an API surface that does not map neatly to the various specifications which Servo and SpiderMonkey are meant to implement, and resulting in a tight-coupling between Servo's implementation of various Web platform APIs and SpiderMonkey. A good example of such tight-coupling is Servo's implementation of the [Streams standard](https://streams.spec.whatwg.org), which, while not being part of EcmaScript but rather part of the Web platform, relies on an implementation provided(and now [deprecated](https://spidermonkey.dev/blog/2022/01/14/newsletter-firefox-96-97.html)) by SpiderMonkey itself. 
 
-## Spidermonkey: a modern script engine
+## SpiderMonkey: a modern script engine
 
 SpiderMonkey is the Javascript and Wasm implementation [used in FireFox](https://firefox-source-docs.mozilla.org/js/index.html#spidermonkey). As FireFox is a modern browser with a feature-set similar to Chrome([differences between Chrome 124 and FireFox 125](https://caniuse.com/?compare=chrome+124,firefox+125&compareCats=all)), we can deduct that SpiderMonkey is a modern script execution engine with a feature-set similar to [V8](https://v8.dev/), the engine used in Chrome. 
 
@@ -44,5 +44,5 @@ The idea is a Web IDL layer with a "bring your own JS engine" approach.
 
 ### Short-term
 
-- Hide `js::jsapi` behdind safe and idiomatic Rust abstractions found in `components/script/dom/bindings`. 
+- Hide `js::jsapi` behind safe and idiomatic Rust abstractions found in `components/script/dom/bindings`. 
 - This also brings us closer to Web IDL spec. 
