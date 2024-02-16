@@ -32,7 +32,7 @@ One issue with these capabilities, probably because it was unthinkable within Mo
 
 ## The problem of a lack of modularity
 
-Servo's implementation of the Web platform is peppered with unsafe calls to `js::jsapi`: unsafe, non-idiomatic, and tightly-coupled to the SpiderMonkey API. 
+Servo's implementation of the Web platform is peppered with unsafe calls to `js::jsapi`: unsafe, non-idiomatic, and tightly-coupled to the SpiderMonkey API. The utilities and generated code are also tightly-coupled, but that is at least hidden from their point of use in the rest of the `script` crate--making it easier to reduce and eventually remove that coupling.
 
 On the bright side, we have: 
 
