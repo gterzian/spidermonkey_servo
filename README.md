@@ -23,7 +23,7 @@ While performance and feature-sets are bound to differ when comparing specific r
 ## Servo's integration of SpiderMonkey
 
 Servo being written in Rust, integration with the C++ codebase of SpiderMonkey happens via a crate of [Rust bindings](https://github.com/servo/mozjs). These bindings consists of two parts:
-- `mozjs-sys`: low-level Rust bindings to the C++ API. In Servo these are used as `use js::jsapi`, `use js::jsval`, and `js::glue`.
+- `mozjs-sys`: low-level Rust bindings to the C++ API. In Servo these are used as `use js::jsapi`, `use js::jsval`, and `use js::glue`.
 - `mozjs`: Higher-level bindings that hide the SpiderMonkey API behind idiomatic Rust API. In Servo these are used as `use js::rust`.
 
 Servo uses both parts of these bindings, additional code found in Servo itself at `components/script/dom/bindings`, and other code which is not part of the repository but rather [generated as part of the build process](https://github.com/servo/servo/blob/b1c9378af457093fa1fcee83de29736dc49f7c0f/components/script/dom/bindings/codegen/CodegenRust.py). The generated code deals with mundane low-level matters that makes Rust objects integrate with the SpiderMonkey runtime(in JS and Wasm) and vice-versa; the manually written code found in `components/script/dom/bindings` consists of utilities used across Servo's `script` crate that make it easier to integrate the Web Platform with SpiderMonkey. In particular, integration with the SpiderMonkey garbage collector is an important concern, which is best dealt with through shared utilities to avoid programming mistakes. Servo's large set of utilities and code generation capabilities result from the initial investment made by Mozilla. 
