@@ -46,7 +46,7 @@ On the bright side, we have:
 ### Long-term
 
 In an ideal world, Servo should have a clear separation of concerns between the Web platform and the execution of script, integrated by way of a generic interface. 
-The idea is a Web IDL layer implementation with a "bring your own JS engine" approach, by way of an interface that any bindings layer could implement. But, it is impossible to start formulating what such a layer would look like, until we have cleaned-up the `components/script` crate to hide the use of SpiderMonkey APIs behind safe and idiomatic Rust. This brings us to the short-term--or rather: continuous--approach we are pursuing. 
+The idea is a Web IDL layer implementation with a "bring your own JS engine" approach, by way of an interface that any bindings layer could implement. This would open the door for Servo to use other engines to execute script. Besides existing engines used in other browsers, this would also enable Wasm-based runtimes such as [Wasmtime](https://github.com/bytecodealliance/wasmtime), as well as future runtimes not invented yet. But, it is impossible to start formulating what such a layer would look like, until we have cleaned-up the `components/script` crate to hide the use of SpiderMonkey APIs behind safe and idiomatic Rust. This brings us to the short-term--or rather: continuous--approach we are pursuing. 
 
 ### Short-term
 A clean-up of script consists of the following: 
