@@ -43,8 +43,10 @@ On the bright side, we have:
 
 ## The solution to the problem of a lack of modularity
 
-### Long-term
+### Prior art
+An existing effort to provide a common interface to all JS engines is React-Native's [JavaScript Interface (JSI)](https://github.com/facebook/react-native/blob/d97741af60e3af598d71894800d928b61c5782b4/packages/react-native/ReactCommon/jsi/jsi/jsi.h), which is [described as](https://reactnative.dev/blog/2021/10/26/toward-hermes-being-the-default#pioneering-at-vertical-integrations) "a lightweight, general-purposed API for embedding a JavaScript engine into a C++ program". It allows React-Native to run JS and call into JS engines across platforms: using Facebook's [Hermes](https://reactnative.dev/blog/2021/10/26/toward-hermes-being-the-default) for Android and Apple's JavascriptCore on IOS. It appears to be the only existing effort to implement such an interface. 
 
+### Long-term
 In an ideal world, Servo should have a clear separation of concerns between the Web platform and the execution of script, integrated by way of a generic interface. 
 The idea is a Web IDL layer implementation with a "bring your own JS engine" approach, by way of an interface that any bindings layer could implement. This would open the door for Servo to use other engines to execute script. Besides existing engines used in other browsers, this would also enable Wasm-based runtimes such as [Wasmtime](https://github.com/bytecodealliance/wasmtime), as well as future runtimes not invented yet. But, it is impossible to start formulating what such a layer would look like, until we have cleaned-up the `components/script` crate to hide the use of SpiderMonkey APIs behind safe and idiomatic Rust. This brings us to the short-term--or rather: continuous--approach we are pursuing. 
 
