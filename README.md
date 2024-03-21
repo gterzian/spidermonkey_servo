@@ -43,8 +43,8 @@ On the bright side, we have:
 
 ## The solution to the problem of a lack of modularity
 
-### Prior art
-An existing effort to provide a common interface to all JS engines is React-Native's [JavaScript Interface (JSI)](https://github.com/facebook/react-native/blob/d97741af60e3af598d71894800d928b61c5782b4/packages/react-native/ReactCommon/jsi/jsi/jsi.h), which is [described as](https://reactnative.dev/blog/2021/10/26/toward-hermes-being-the-default#pioneering-at-vertical-integrations) "a lightweight, general-purposed API for embedding a JavaScript engine into a C++ program". It allows React-Native to run JS using different JS engines [different JS engines](https://reactnative.dev/docs/javascript-environment#javascript-runtime), including [JavascriptCore](https://trac.webkit.org/wiki/JavaScriptCore), the engine used in Webkit, and [Hermes](https://reactnative.dev/docs/hermes), an engine that comes bundled with React-native. JSI appears to be the only existing effort to implement such an common interface to a Javascript engine. 
+### Prior art: JSI and React-Native
+An existing effort to provide a common interface to all JS engines is React-Native's [JavaScript Interface (JSI)](https://github.com/facebook/react-native/blob/d97741af60e3af598d71894800d928b61c5782b4/packages/react-native/ReactCommon/jsi/jsi/jsi.h), which is [described as](https://reactnative.dev/blog/2021/10/26/toward-hermes-being-the-default#pioneering-at-vertical-integrations) "a lightweight, general-purposed API for embedding a JavaScript engine into a C++ program". It allows React-Native to run JS using [different JS engines](https://reactnative.dev/docs/javascript-environment#javascript-runtime), including [JavascriptCore](https://trac.webkit.org/wiki/JavaScriptCore), the engine used in Webkit, and [Hermes](https://reactnative.dev/docs/hermes), an engine that comes bundled with React-native. JSI appears to be the only existing effort to implement such an common interface to Javascript engines. 
 
 ### Long-term
 In an ideal world, Servo should have a clear separation of concerns between the Web platform and the execution of script, integrated by way of a generic interface. 
